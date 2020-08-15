@@ -8,7 +8,6 @@ import { Todo } from 'src/app/model/todo-model';
   styleUrls: ['./todo-list.component.css']
 })
 export class ToDoListComponent implements OnInit{
-  //@Input()
   todo: Todo;
 
   toDoItem: string;
@@ -18,7 +17,6 @@ export class ToDoListComponent implements OnInit{
     this.toDoItem = '';
   }
 
-
   ngOnInit() {
     this.todoList = this.todoService.getTodos();
   }
@@ -26,10 +24,12 @@ export class ToDoListComponent implements OnInit{
   addToDo() {
     this.todoService.addTodo(this.toDoItem);
     this.toDoItem = '';
+    this.todoList = this.todoService.getTodos();
   }
 
   removeTodo(id: number) {
     this.todoService.removeTodo(id);
+    this.todoList = this.todoService.getTodos();
   }
 
   updateCompleted(id: number) {
@@ -38,10 +38,12 @@ export class ToDoListComponent implements OnInit{
 
   toggleEdit(id: number) {
     this.todoService.toggleEdit(id);
+    this.todoList = this.todoService.getTodos();
   }
 
   onEdit(id: number, newContent: string) {
     this.todoService.editTodo(id, newContent);
     this.todoService.toggleEdit(id);
+    this.todoList = this.todoService.getTodos();
   }
 }
