@@ -1,0 +1,24 @@
+<div>
+  <input type="text" value={{toDoItem}} [(ngModel)]="toDoItem">
+  <button (click)="addToDo()">Add to List</button>
+</div>
+
+<div class="items" *ngFor="let todo of todoList">
+  <div>
+    <input type="checkbox" [(ngModel)]="todo.completed" (change)="updateCompleted(todo.id)">
+
+    <div *ngIf="!todo.editing; else editingTodo" >{{ todo.content }}</div>
+
+    <ng-template #editingTodo>
+      <input #editVal type="text" [(ngModel)]="todo.content" >
+      <button (click)="onEdit(todo.id, editVal.value)">Save</button>
+      <button (click)="toggleEdit(todo.id)">Cancel</button>
+    </ng-template>
+
+  </div>
+
+  <div class="remove-item">
+    <button (click)="removeTodo(todo.id)">Remove</button>
+    <button (click)="toggleEdit(todo.id)">Edit</button>
+  </div>
+</div>
