@@ -8,11 +8,9 @@ import { Todo } from 'src/app/model/todo-model';
   styleUrls: ['./todo-list.component.css']
 })
 export class ToDoListComponent implements OnInit{
-  todo: Todo;
 
   toDoItem: string;
   todoList: Todo[];
-
   editedItem: string;
 
   constructor(private todoService: ToDoService) {

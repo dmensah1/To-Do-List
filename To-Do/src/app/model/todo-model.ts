@@ -1,4 +1,5 @@
 export class Todo {
+  // model for the to-do list
   id: number;
   content: string;
   completed: boolean;

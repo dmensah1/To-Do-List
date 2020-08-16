@@ -89,5 +89,4 @@ export class ToDoService {
     }
     this.setLocalStorageList(listItems);
   }
-
 }

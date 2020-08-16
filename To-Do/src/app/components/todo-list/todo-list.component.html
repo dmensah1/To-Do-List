@@ -1,5 +1,5 @@
 <div class="input">
-  <input class="todo-input" type="text" value={{toDoItem}} [(ngModel)]="toDoItem">
+  <input class="todo-input" type="text" placeholder="What did you want to do today" value={{toDoItem}} [(ngModel)]="toDoItem">
   <button class="input-btn" (click)="addToDo()">Add to List</button>
 </div>
 
@@ -10,7 +10,7 @@
     <div class="content" *ngIf="!todo.editing; else editingTodo" >{{ todo.content }}</div>
 
     <ng-template  #editingTodo >
-        <input class="edit-field" #editVal type="text" value={{editedItem}} [(ngModel)]="editedItem" >
+        <input class="edit-field" #editVal type="text" placeholder="{{todo.content}}" value={{editedItem}} [(ngModel)]="editedItem">
     </ng-template>
 
   </div>
