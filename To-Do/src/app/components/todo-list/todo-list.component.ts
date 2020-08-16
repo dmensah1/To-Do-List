@@ -13,8 +13,11 @@ export class ToDoListComponent implements OnInit{
   toDoItem: string;
   todoList: Todo[];
 
+  editedItem: string;
+
   constructor(private todoService: ToDoService) {
     this.toDoItem = '';
+    this.editedItem = '';
   }
 
   ngOnInit() {
@@ -41,8 +44,9 @@ export class ToDoListComponent implements OnInit{
     this.todoList = this.todoService.getTodos();
   }
 
-  onEdit(id: number, newContent: string) {
-    this.todoService.editTodo(id, newContent);
+  onEdit(id: number) {
+    this.todoService.editTodo(id, this.editedItem);
+    this.editedItem = '';
     this.todoService.toggleEdit(id);
     this.todoList = this.todoService.getTodos();
   }

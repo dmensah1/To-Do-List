@@ -1,0 +1,35 @@
+main {
+  width: 100%;
+  font-family: Helvetica;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    width: 90%;
+    margin: 1rem auto;
+    padding-bottom: 40px;
+    font-size: 16px;
+  }
+}
+
+
+@media only screen and (min-width: 950px) {
+  main {
+    width: 80%;
+  }
+}
+
+
+@media only screen and (min-width: 1536px) {
+  main {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 1824px) {
+  main {
+    width: 70%;
+  }
+}

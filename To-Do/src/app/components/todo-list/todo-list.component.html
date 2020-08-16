@@ -1,24 +1,24 @@
-<div>
-  <input type="text" value={{toDoItem}} [(ngModel)]="toDoItem">
-  <button (click)="addToDo()">Add to List</button>
+<div class="input">
+  <input class="todo-input" type="text" value={{toDoItem}} [(ngModel)]="toDoItem">
+  <button class="input-btn" (click)="addToDo()">Add to List</button>
 </div>
 
-<div class="items" *ngFor="let todo of todoList">
-  <div>
-    <input type="checkbox" [(ngModel)]="todo.completed" (change)="updateCompleted(todo.id)">
+<div class="items-wrap" *ngFor="let todo of todoList">
+  <div class="items">
 
-    <div *ngIf="!todo.editing; else editingTodo" >{{ todo.content }}</div>
+    <input class="check" type="checkbox" [(ngModel)]="todo.completed" (change)="updateCompleted(todo.id)">
+    <div class="content" *ngIf="!todo.editing; else editingTodo" >{{ todo.content }}</div>
 
-    <ng-template #editingTodo>
-      <input #editVal type="text" [(ngModel)]="todo.content" >
-      <button (click)="onEdit(todo.id, editVal.value)">Save</button>
-      <button (click)="toggleEdit(todo.id)">Cancel</button>
+    <ng-template  #editingTodo >
+        <input class="edit-field" #editVal type="text" value={{editedItem}} [(ngModel)]="editedItem" >
     </ng-template>
 
   </div>
 
-  <div class="remove-item">
-    <button (click)="removeTodo(todo.id)">Remove</button>
-    <button (click)="toggleEdit(todo.id)">Edit</button>
+  <div class="options-btn" >
+    <button class="btn" *ngIf="!todo.editing" (click)="removeTodo(todo.id)">Remove</button>
+    <button class="btn edit-btn" *ngIf="!todo.editing" (click)="toggleEdit(todo.id)">Edit</button>
+    <button class="btn" *ngIf="todo.editing" (click)="onEdit(todo.id)">Save</button>
+    <button class="btn cancel" *ngIf="todo.editing" (click)="toggleEdit(todo.id)">Cancel</button>
   </div>
 </div>
